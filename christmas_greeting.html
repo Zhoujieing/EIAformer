@@ -1,0 +1,112 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>圣诞祝福</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Arial', sans-serif;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: linear-gradient(to bottom, #00b3b3, #ff4d4d);
+                color: white;
+                text-align: center;
+                overflow: hidden;
+            }
+
+            .container {
+                position: relative;
+            }
+
+            .message {
+                font-size: 60px;
+                font-weight: bold;
+                animation: fadeIn 3s ease-out forwards;
+                text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            }
+
+            @keyframes fadeIn {
+                0% { opacity: 0; transform: translateY(-50px); }
+                100% { opacity: 1; transform: translateY(0); }
+            }
+
+            .snow {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                pointer-events: none;
+                animation: snow 10s linear infinite;
+            }
+
+            @keyframes snow {
+                0% { transform: translateY(-100px); }
+                100% { transform: translateY(100vh); }
+            }
+
+            .snowflake {
+                position: absolute;
+                top: -10px;
+                color: #fff;
+                font-size: 25px;
+                user-select: none;
+                animation: fall 10s linear infinite;
+                opacity: 0.8;
+            }
+
+            @keyframes fall {
+                0% { transform: translateY(-10px); opacity: 1; }
+                100% { transform: translateY(100vh); opacity: 0; }
+            }
+
+            .footer {
+                position: absolute;
+                bottom: 20px;
+                font-size: 18px;
+                color: #fff;
+                animation: fadeIn 5s ease-out forwards;
+                animation-delay: 4s;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="message">Merry Christmas!</div>
+            <div class="snow" id="snow"></div>
+            <div class="footer">Wishing you a wonderful holiday season!</div>
+        </div>
+
+        <script>
+            // 生成雪花效果
+            function createSnowflakes() {
+                var snowContainer = document.getElementById("snow");
+                var snowflakeCount = 100;
+
+                for (var i = 0; i < snowflakeCount; i++) {
+                    var snowflake = document.createElement("div");
+                    snowflake.textContent = "❄️";
+                    snowflake.classList.add("snowflake");
+                    snowflake.style.left = Math.random() * 100 + "vw";
+                    snowflake.style.animationDuration = Math.random() * 5 + 5 + "s";
+                    snowflake.style.animationDelay = Math.random() * 5 + "s";
+                    snowContainer.appendChild(snowflake);
+                }
+            }
+
+            // 执行雪花效果
+            createSnowflakes();
+        </script>
+    </body>
+    </html>
+    
